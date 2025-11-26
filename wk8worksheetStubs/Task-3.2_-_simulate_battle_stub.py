@@ -1,3 +1,4 @@
+#Ismael Charly Diarrassouba 201952742 this is my own work
 """
 Exercise 3.2: Simulate a Turn-Based Battle (Class-Based)
 
