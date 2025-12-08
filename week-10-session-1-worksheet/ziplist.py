@@ -1,6 +1,6 @@
 
-# Name:
-# Username:
+# Name: Ismael Charly Diarrassouba
+# Username: 201952742
 
 # Lists contents of a zip archive
 # usage: python ziplist.py <zipfile>
@@ -11,11 +11,28 @@
 
 import sys
 #from zipfile import ...   # tools in this module can be used
-
+import zipfile
 # filename is a command line argument 
-file_name = ""
+if len(sys.argv) != 2:
+    print("Usage: python file_line_count.py <filename.txt>")
+    sys.exit()
 
+file_name = sys.argv[1]
+try:
+    with zipfile.ZipFile(file_name, 'r') as zip_ref:
+        for file in zip_ref.namelist():
+            print(file)
+    
+except FileNotFoundError:
+    print(f"File not found: python ziplist.py {file_name}")
+
+except zipfile.BadZipFile:
+    print(f"Bad zip file: python ziplist.py {file_name}")
+
+except TypeError:
+    print(f"Usage: python ziplist.py <filename.zip>")
 # Error message: "Usage: python ziplist.py <filename.zip>"
+
 
 # Error message: "File not found: python ziplist.py {file_name}"
 

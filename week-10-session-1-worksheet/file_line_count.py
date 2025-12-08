@@ -1,6 +1,6 @@
 
-# Name:
-# Username: 
+# Name: Ismael Charly Diarrassouba
+# Username: 201952742
 
 import sys
 
@@ -10,19 +10,36 @@ import sys
 # You must use the error messages precisely as defied below.
 
 # filename is a command line argument 
-file_name = ""
-
-# Error message: "Usage: python file_line_count.py <filename.txt>"
-
-# Open the file and read its content
-
-# Error message: "File not found: python file_line_count.py {file_name}"
 
 # count number of lines that are not blank
 number_of_lines = 0
 
-# success - report the number of lines
+if len(sys.argv) != 2:
+    print("Usage: python file_line_count.py <filename.txt>")
+    sys.exit()
 
-# Success message: "{file_name} has {number_of_lines} lines"
+file_name = sys.argv[1]
+
+try:
+    with open (f"{file_name}", "r") as f:
+        for line in f:
+            if line.strip() != "":
+                number_of_lines = number_of_lines + 1
+        print(f"{file_name} has {number_of_lines} lines")
+        
+
+
+
+
+
+# Error message: "Usage: python file_line_count.py <filename.txt>"
+
+# Error message: "File not found: python file_line_count.py {file_name}" done
+except FileNotFoundError:
+    print(f"File not found: python file_line_count.py {file_name}")
+
+except TypeError:
+    print(f"Usage: python file_line_count.py <filename.txt>")
+
 
 # Test on the 'text_example.txt' file. The answer should be 4.
