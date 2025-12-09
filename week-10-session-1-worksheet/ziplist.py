@@ -14,8 +14,8 @@ import sys
 import zipfile
 # filename is a command line argument 
 if len(sys.argv) != 2:
-    print("Usage: python file_line_count.py <filename.txt>")
-    sys.exit()
+    print("Usage: python ziplist.py <filename.zip>", file=sys.stderr)
+    sys.exit(1)
 
 file_name = sys.argv[1]
 try:
@@ -24,13 +24,16 @@ try:
             print(file)
     
 except FileNotFoundError:
-    print(f"File not found: python ziplist.py {file_name}")
+    print(f"File not found: python ziplist.py {file_name}", file=sys.stderr)
+    sys.exit(1)
 
 except zipfile.BadZipFile:
-    print(f"Bad zip file: python ziplist.py {file_name}")
+    print(f"Bad zip file: python ziplist.py {file_name}", file=sys.stderr)
+    sys.exit(1)
 
 except TypeError:
-    print(f"Usage: python ziplist.py <filename.zip>")
+    print(f"Usage: python ziplist.py <filename.zip>", file=sys.stderr)
+    sys.exit(1)
 # Error message: "Usage: python ziplist.py <filename.zip>"
 
 

@@ -15,8 +15,8 @@ import sys
 number_of_lines = 0
 
 if len(sys.argv) != 2:
-    print("Usage: python file_line_count.py <filename.txt>")
-    sys.exit()
+    print("Usage: python file_line_count.py <filename.txt>", file=sys.stderr)
+    sys.exit(1)
 
 file_name = sys.argv[1]
 
@@ -36,10 +36,12 @@ try:
 
 # Error message: "File not found: python file_line_count.py {file_name}" done
 except FileNotFoundError:
-    print(f"File not found: python file_line_count.py {file_name}")
+    print(f"File not found: python file_line_count.py {file_name}", file=sys.stderr)
+    sys.exit(1)
 
 except TypeError:
-    print(f"Usage: python file_line_count.py <filename.txt>")
+    print(f"Usage: python file_line_count.py <filename.txt>", file=sys.stderr)
+    sys.exit(1)
 
 
 # Test on the 'text_example.txt' file. The answer should be 4.
