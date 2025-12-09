@@ -14,7 +14,7 @@ import sys
 import zipfile
 # filename is a command line argument 
 if len(sys.argv) != 2:
-    print("Usage: python ziplist.py <filename.zip>", file=sys.stderr)
+    print("Usage: python ziplist.py <file.zip>", file=sys.stderr)
     sys.exit(1)
 
 file_name = sys.argv[1]
